@@ -162,7 +162,7 @@ var rr = {
             var xDiv     = document.createElement("div");
             xDiv.id = "xDiv";
             xDiv.className = "x";
-            xDiv.innerHTML = "<img src=\"close.gif\" border=\"0\" id='xImg'>";
+            xDiv.innerHTML = "<img src=\"img/close.gif\" border=\"0\" id='xImg'>";
             mainDiv.appendChild(xDiv);
         }
 

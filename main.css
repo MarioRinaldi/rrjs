@@ -11,6 +11,7 @@ label {width:130px;float:left}
     width:990px;
 }
 #header,#contentCenter,#footer{
+    border-radius:5px;
     -moz-border-radius:5px;
     border:1px solid #CCCCCC;
     margin-bottom:10px;
@@ -28,3 +29,39 @@ label {width:130px;float:left}
 #footer {
 }
 div.code {border:1px solid #666666;background:none;overflow:visible; padding:10px;font-size:10px;margin: 10px 0}
+
+
+
+/*
+ *
+ * demonstrations
+ *
+ */
+
+/* rr.popupMessage - Classe Auxiliar */
+.rrPopupMessageAux {
+    border: 4px solid #9393FF; 
+    background: #E1E1FF;
+}
+
+.rrPopupMessageAux .text {
+    color: #6666CC;
+    border: 1px solid #9393FF;
+    background: #FFFFFF;
+}
+
+.rrPopupMessageAux .button {
+    color:#6666EE;
+    background:#E1E1FF;
+    border-right:1px solid #9393FF; 
+    border-bottom:1px solid #9393FF;
+}
+/* rr.popupMessage - Classe Auxiliar FIM */
+
+/* rr.popupFrame - Clase Auxiliar */
+.rrPopupFrameAux {
+    color: #6666CC;
+    background: #E1E1FF;
+    border: 3px solid #9393FF;
+}
+/* rr.popupFrame - Clase Auxiliar FIM */
