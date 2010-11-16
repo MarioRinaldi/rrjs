@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>RR.JS - Exemplos</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="rr.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="rrJs_demo.css" />    
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />    
+    
+    <script type="text/javascript">
+
+    </script>
+
+</head>
+
+<body id="index">
+<div id="content">
+    <div class="visualPadding">
+        <div id="header">
+            <div class="visualPadding">
+                <h1>Biblioteca Javascript RR</h1>
+            </div>
+        </div>
+        <div id="contentCenter">
+            <div class="visualPadding">
+                <div class="options">
+                    <h2>Download:</h2>
+                    <p><a href="rr.css" target="_blank">CSS</a> - <a href="rr.js" target="_blank">JS</a></p>
+                </div>
+                <div class="options">
+                    <h2>rr.popupMessage:</h2>
+                    <ul class="">
+                        <li><span class="title">Simples (padr&atilde;o)</span>
+                            <a href="#" onclick="rr.popupMessage('Demonstração rr.popupMessage'); return false;">Exemplo</a>
+                            - 
+                            <a href="#" onclick="main.showCode(this);" id="popupMessage_0_a">c&oacute;digo</a>
+                            <div id="popupMessage_0_div" class="code">
+                                    rr.popupMessage('Demonstração rr.popupMessage');
+                            </div>
+                        </li>
+                        <li><span class="title">Título</span>
+                            <a href="#" onclick="rr.popupMessage('Demonstração rr.popupMessage<br />com Título',{title: 'rr.popupMessage'}); return false;">Exemplo</a>
+                            - 
+                            <a href="#" onclick="main.showCode(this);" id="popupMessage_1_a">c&oacute;digo</a>
+                            <div id="popupMessage_1_div" class="code">
+                                    rr.popupMessage('Demonstração rr.popupMessage&lt;br /&gt;com Título',{title: 'rr.popupMessage'});
+                            </div>
+                        </li>
+                        <li><span class="title">Largura Variável</span>
+                            <a href="#" onclick="rr.popupMessage('Demonstração rr.popupMessage<br />com largura variavel',{width: '500'}); return false;">Exemplo</a>
+                            - 
+                            <a href="#" onclick="main.showCode(this);" id="popupMessage_2_a">c&oacute;digo</a>
+                            <div id="popupMessage_2_div" class="code">
+                                    rr.popupMessage('Demonstração rr.popupMessage&lt;br /&gt;com largura variavel',{width: '500'});
+                            </div>
+                        </li>
+                        <li><span class="title">Altura Variável</span>
+                            <a href="#" onclick="rr.popupMessage('Demonstração rr.popupMessage<br />com altura variavel',{height: '300'}); return false;">Exemplo</a>
+                            - 
+                            <a href="#" onclick="main.showCode(this);" id="popupMessage_3_a">c&oacute;digo</a>
+                            <div id="popupMessage_3_div" class="code">
+                                    rr.popupMessage('Demonstração rr.popupMessage&lt;br /&gt;com altura variavel',{height: '300'});
+                            </div>
+                        </li>
+                        <li><span class="title">Título, Altura e Largura Variáveis</span>
+                            <a href="#" onclick="rr.popupMessage('Demonstração rr.popupMessage<br />com altura e largura variaveis<br />e titulo',{title: 'rr.popupMessage', width: '500', height: '300'}); return false;">Exemplo</a>
+                            - 
+                            <a href="#" onclick="main.showCode(this);" id="popupMessage_4_a">c&oacute;digo</a>
+                            <div id="popupMessage_4_div" class="code">
+                                    rr.popupMessage('Demonstração rr.popupMessage&lt;br /&gt;com altura e largura variaveis&lt;br /&gt;e titulo',{title: 'rr.popupMessage', width: '500', height: '300'});
+                            </div>
+                        </li>
+                        <li><span class="title">Classe Auxiliar</span>
+                            <a href="#" onclick="rr.popupMessage('Demonstração rr.popupMessage<br />com classe adicional',{auxClass: 'rrPopupMessageAux'}); return false;">Exemplo</a>
+                            - 
+                            <a href="#" onclick="main.showCode(this);" id="popupMessage_5_a">c&oacute;digo</a>
+                            <div id="popupMessage_5_div" class="code">
+                                    rr.popupMessage('Demonstração rr.popupMessage&lt;br /&gt;com classe adicional',{auxClass: 'rrPopupMessageAux'});
+                            </div>
+                        </li>
+                        <li><span class="title">com função de Callback</span>
+                            <a href="#" onclick="rr.popupMessage('Demonstração rr.popupMessage<br />com função de Callback', { okFunction: demo.okFunction } ); return false;">Exemplo</a>
+                            - 
+                            <a href="#" onclick="main.showCode(this);" id="popupMessage_6_a">c&oacute;digo</a>
+                            <div id="popupMessage_6_div" class="code">
+                                    rr.popupMessage('Demonstração rr.popupMessage&lt;br /&gt;com função de Callback', { okFunction: demo.okFunction } );
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="options">
+                <h2>rr.popupOkCancel e rr.popupYesNo:</h2>
+                    <p><a href="#" onclick="rr.popupOkCancel('Demonstração rr.popupOkCancel<br />com OK e Cancelar<br />e funções de Callback',{ cancelFunction: demo.cancelFunction, okFunction: demo.okFunction }); return false;">Exemplo com OK e Cancelar e funções de Callback</a></p>
+                    <p><a href="#" onclick="rr.popupYesNo('Demonstração rr.popupYesNo<br />com Sim e Não<br />e funções de Callback',{ cancelFunction: demo.noFunction, okFunction: demo.yesFunction }); return false;">Exemplo com Sim e Não e funções de Callback</a></p>
+                </div>
+                
+                <div class="options">
+                    <h2>rr.popupFrame:</h2>
+                    <p><a href="#" onClick="rr.popupFrame('ajx1.html'); return false;">Exemplo com DIV</a></p>
+                    <p><a href="#" onClick="rr.popupFrame('ajx1.html', { width: 500, height: 100 } ); return false;">Exemplo com DIV, Largura e Altura</a></p>
+                    <p><a href="#" onClick="rr.popupFrame('ajx2.html', { type: 'iframe' } ); return false;">Exemplo com Iframe</a></p>
+                    <p><a href="#" onClick="rr.popupFrame('ajx3.html', { type: 'iframe', closeButton: 'no' } ); return false;">Exemplo com Iframe sem botão X</a></p>
+                    <p><a href="#" onClick="rr.popupFrame('ajx1.html',{auxClass: 'rrPopupFrameAux'}); return false;">Exemplo com DIV e Classe Auxiliar</a></p>
+                </div>
+                
+                <div class="options">
+                    <h2>rr.createOverlay:</h2>
+                    <p><a href="#" onclick="return rr.popupMessage('Demonstração rr.popupMessage', { overlay: {} }); return false;">Exemplo Simples com DIV</a></p>
+                    <p><a href="#" onclick="return rr.popupMessage('Demonstração rr.popupMessage',{ auxClass: 'rrPopupMessageAux', overlay: {opacity: 60, color: '#CCCFFF'} }); return false;">Exemplo com DIV e Opacidade e Cor de Fundo Variáveis</a></p>
+                    <p><a href="#" onClick="return rr.popupFrame('ajx1.html', { overlay: {} }); return false;">Exemplo com Frame</a></p>
+                    <p><a href="#" onClick="return rr.createOverlay(null); return false;">Exemplo Somente com Overlay</a></p>
+                </div>
+                
+                <div class="options">
+                    <h2>rr.ajax.fetchArray:</h2>
+                    <p><a href="#" onclick="rr.ajax.fetchArray('ajx4.html', { responseHandler: demo.displayArray }); return false;">Exemplo array simples e CSV (;)</a></p>
+                    <p><a href="#" onclick="rr.ajax.fetchArray('ajx4a.html', { responseHandler: demo.displayArray, delimiter: '||' }); return false;">Exemplo com array simples e delimitador personalizado (||)</a></p>
+                </div>
+
+                <div class="options">
+                    <h2>rr.ajax.fetchAssoc:</h2>
+                    <p><a href="#" onclick="rr.ajax.fetchAssoc('ajx5.html', { responseHandler: demo.displayAssoc }); return false;">Exemplo array associativo e CSV (;)</a></p>
+                    <p><a href="#" onclick="rr.ajax.fetchAssoc('ajx5a.html', { responseHandler: demo.displayAssoc, delimiter: '&', separator: '=>' }); return false;">Exemplo array associativo com delimitador e separador personalizados (&amp; e =>)</a></p>
+                </div>
+
+                <div class="options">
+                    <h2>rr.ajax.replaceContent:</h2>
+                    <p><a href="#" onclick="rr.ajax.replaceContent('ajaxDemo1','ajx1.html'); return false;">Exemplo Simples</a></p>
+                    <p><a href="#" onclick="rr.ajax.replaceContent('ajaxDemo1','_ajx1.html'); return false;">Simulação de erro</a>
+                    <br /><div style="width: 200px; height: 50px; border: 1px solid black;" id="ajaxDemo1">Texto Original</div></p>
+                </div>
+
+                <div class="options">    
+                    <h2>rr.addBookmark:</h2>
+                    <p><a href="#" onclick="rr.addBookmark(); return false;">Exemplo simples</a></p>
+                    <p><a href="#" onclick="rr.addBookmark( { title: 'Teste Bookmark' } ); return false;">Exemplo com título personalizado</a></p>
+                    <p><a href="#" onclick="rr.addBookmark( { location: 'http://www.renatorodrigues.com' } ); return false;">Exemplo com endereço personalizado (renatorodrigues.com)</a></p>
+                    <p><a href="#" onclick="rr.addBookmark( { title: 'Site do Renato', location: 'http://www.renatorodrigues.com' } ); return false;">Exemplo com título e endereço personalizado (renatorodrigues.com)</a></p>
+                </div>
+
+                <div class="options">
+                    <h2>rr.onlyNumbers e rr.formatField:</h2>
+                    <p><label>Somente Números: </label> <input type="text" size="10" onkeydown="return rr.onlyNumbers(event);"></p>
+                    <p><label>Formatação CPF: </label> <input type="text" size="12" onkeydown="return rr.onlyNumbers(event);" onchange="rr.formatField(this,'cpf');"></p>
+                    <p><label>Formatação CNPJ: </label> <input type="text" size="12" onkeydown="return rr.onlyNumbers(event);" onchange="rr.formatField(this,'cnpj');"></p>
+                    <p><label>Formatação IE: </label> <input type="text" size="12" onkeydown="return rr.onlyNumbers(event);" onchange="rr.formatField(this,'ie');"></p>
+                    <p><label>Formatação CEP: </label> <input type="text" size="12" onkeydown="return rr.onlyNumbers(event);" onchange="rr.formatField(this,'cep');"></p>
+                    <p><label>Formatação Tel: </label> <input type="text" size="12" onkeydown="return rr.onlyNumbers(event);" onblur="rr.formatField(this,'tel');"></p>
+                    <p><label>Formatação Tel2: </label> <input type="text" size="12" onkeydown="return rr.onlyNumbers(event);" onblur="rr.formatField(this,'tel');"></p>
+                    <p><label>Formatação Tel3: </label> <input type="text" size="12" onkeydown="return rr.onlyNumbers(event);" onblur="rr.formatField(this,'tel');"></p>
+                </div>
+            </div>
+        </div>
+        <div id="footer">
+            <div class="visualPadding">
+                <p> 2006-2010 &copy; <a href="http://www.renatorodrigues.com" target="_blank">Renato Rodrigues</a> </p> 
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="rr.js"></script>
+<script type="text/javascript" src="main.js"></script>
+</body>
+</html>

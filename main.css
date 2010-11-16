@@ -1,0 +1,30 @@
+body {
+    color:#666666;
+    font-family:Verdana,Arial,Tahoma,sans-serif;
+    font-size:13px;
+}
+.visualPadding {padding:10px}
+h1,h2{border-bottom:1px solid #CCCCCC}
+label {width:130px;float:left}
+#content {
+    margin:0 auto;
+    width:990px;
+}
+#header,#contentCenter,#footer{
+    -moz-border-radius:5px;
+    border:1px solid #CCCCCC;
+    margin-bottom:10px;
+}
+#header,#footer { 
+    text-align:center;
+}
+#header { 
+}
+#header h1 { 
+    font: italic bold 30px Verdana,Arial,Tahoma,sans-serif
+}
+#contentCenter {
+}
+#footer {
+}
+div.code {border:1px solid #666666;background:none;overflow:visible; padding:10px;font-size:10px;margin: 10px 0}

@@ -1,0 +1,148 @@
+/* rr.popupMessage */
+.rrPopupMessage {
+	/* posicionamento */
+    top: 50%;
+	left: 50%;
+	width: 200px;
+	height: 150px;
+	margin-left: -100px; /* Metade do tamanho de width */
+	margin-top: -75px;   /* Metade do tamanho de height */
+	position: absolute;  /* Posicionamento para o IE */
+    z-index: 1001;
+        
+	/* formatação */
+	opacity: 0.9;
+	filter: alpha(opacity=90);
+	text-align: center;
+	padding: 8px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	border: 4px solid #CCCCCC;
+	line-height: 20px;
+	background: #F9F9F9;
+}
+
+body > .rrPopupMessage {
+    position: fixed; /* Posicionamento para navegadores modernos */
+}
+
+.rrPopupMessage h1 {
+    font-size: 16px;
+	font-weight: bold;
+}
+
+.rrPopupMessage .text {
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    color: #AAAAAA;
+    border: 1px solid #CCCCCC;
+    background: #FFFFFF;
+    font-size: 14px;
+}
+
+.rrPopupMessage .buttonDiv {
+    height: 20%;
+}
+
+.rrPopupMessage .button {
+    width: 80px;
+	color:#AAAAAA;
+	background:#FFFFFF;
+	border: 1px solid white;
+	border-right:1px solid gray; 
+	border-bottom:1px solid gray;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	font-weight: bold;
+    margin-top: 8px; //Hack
+}
+.rrPopupMessage .button::-moz-focus-inner {
+    border:0;
+}
+.rrPopupMessage .button:focus{
+    outline : none; 
+}
+.rrPopupMessage .ok {
+
+}
+
+.rrPopupMessage .cancel {
+    margin-right: 20px;
+}
+/* rr.popupMessage FIM */
+
+/* rr.popupFrame */
+.rrPopupFrame {
+    /* posicionamento */
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    height: 250px;
+    margin-left: -100px; /* Metade do tamanho de width */
+    margin-top: -125px;  /* Metade do tamanho de height */
+    position: absolute;  /* Posicionamento para o IE */
+	overflow: hidden;
+    z-index: 1001;
+    
+    /* formatação */
+	opacity: 0.9;
+    filter: alpha(opacity=90);
+	color: #AAAAAA;
+	background: #F9F9F9;
+	border: 3px solid #CCCCCC;
+	padding: 1px;
+}
+
+body > .rrPopupFrame {
+    position: fixed; /* Posicionamento para navegadores modernos */
+}
+
+.rrPopupFrame .frameContent {
+	position: absolute;
+	display: block;
+	width: 100%;
+	height: 100%;
+	z-index: 1002;
+}
+
+.rrPopupFrame .x {
+	position: relative;
+	float: right;
+	z-index: 1003;
+}
+
+.rrPopupFrame .x #xImg {
+	cursor: pointer;
+}
+/* rr.popupFrame FIM */
+
+/* rr.createOverlay  */
+.rrOverlay { /*  IE  */
+    display: none;
+}
+
+body > .rrOverlay {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    display: block;
+    z-index:1000;
+    
+    background:#000000;
+	filter: alpha(opacity=90);
+	opacity:0.9;
+}
+/* rr.createOverlay  FIM */
+
+/* *** AJAX *** */
+
+/* rr.replaceContent */
+.rrLoadingText {
+    width: 100%;
+    text-align: center;
+    color: #CCCCCC;
+    font-weight: bold;
+    font-size: 20px;
+}
