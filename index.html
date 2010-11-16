@@ -97,37 +97,37 @@
                 
                 <div class="options">
                     <h2>rr.popupFrame:</h2>
-                    <p><a href="#" onClick="rr.popupFrame('ajx1.html'); return false;">Exemplo com DIV</a></p>
-                    <p><a href="#" onClick="rr.popupFrame('ajx1.html', { width: 500, height: 100 } ); return false;">Exemplo com DIV, Largura e Altura</a></p>
-                    <p><a href="#" onClick="rr.popupFrame('ajx2.html', { type: 'iframe' } ); return false;">Exemplo com Iframe</a></p>
-                    <p><a href="#" onClick="rr.popupFrame('ajx3.html', { type: 'iframe', closeButton: 'no' } ); return false;">Exemplo com Iframe sem botão X</a></p>
-                    <p><a href="#" onClick="rr.popupFrame('ajx1.html',{auxClass: 'rrPopupFrameAux'}); return false;">Exemplo com DIV e Classe Auxiliar</a></p>
+                    <p><a href="#" onClick="rr.popupFrame('./examples/ajx1.html'); return false;">Exemplo com DIV</a></p>
+                    <p><a href="#" onClick="rr.popupFrame('./examples/ajx1.html', { width: 500, height: 100 } ); return false;">Exemplo com DIV, Largura e Altura</a></p>
+                    <p><a href="#" onClick="rr.popupFrame('./examples/ajx2.html', { type: 'iframe' } ); return false;">Exemplo com Iframe</a></p>
+                    <p><a href="#" onClick="rr.popupFrame('./examples/ajx3.html', { type: 'iframe', closeButton: 'no' } ); return false;">Exemplo com Iframe sem botão X</a></p>
+                    <p><a href="#" onClick="rr.popupFrame('./examples/ajx1.html',{auxClass: 'rrPopupFrameAux'}); return false;">Exemplo com DIV e Classe Auxiliar</a></p>
                 </div>
                 
                 <div class="options">
                     <h2>rr.createOverlay:</h2>
                     <p><a href="#" onclick="return rr.popupMessage('Demonstração rr.popupMessage', { overlay: {} }); return false;">Exemplo Simples com DIV</a></p>
                     <p><a href="#" onclick="return rr.popupMessage('Demonstração rr.popupMessage',{ auxClass: 'rrPopupMessageAux', overlay: {opacity: 60, color: '#CCCFFF'} }); return false;">Exemplo com DIV e Opacidade e Cor de Fundo Variáveis</a></p>
-                    <p><a href="#" onClick="return rr.popupFrame('ajx1.html', { overlay: {} }); return false;">Exemplo com Frame</a></p>
+                    <p><a href="#" onClick="return rr.popupFrame('./examples/ajx1.html', { overlay: {} }); return false;">Exemplo com Frame</a></p>
                     <p><a href="#" onClick="return rr.createOverlay(null); return false;">Exemplo Somente com Overlay</a></p>
                 </div>
                 
                 <div class="options">
                     <h2>rr.ajax.fetchArray:</h2>
-                    <p><a href="#" onclick="rr.ajax.fetchArray('ajx4.html', { responseHandler: demo.displayArray }); return false;">Exemplo array simples e CSV (;)</a></p>
-                    <p><a href="#" onclick="rr.ajax.fetchArray('ajx4a.html', { responseHandler: demo.displayArray, delimiter: '||' }); return false;">Exemplo com array simples e delimitador personalizado (||)</a></p>
+                    <p><a href="#" onclick="rr.ajax.fetchArray('./examples/ajx4.html', { responseHandler: demo.displayArray }); return false;">Exemplo array simples e CSV (;)</a></p>
+                    <p><a href="#" onclick="rr.ajax.fetchArray('./examples/ajx4a.html', { responseHandler: demo.displayArray, delimiter: '||' }); return false;">Exemplo com array simples e delimitador personalizado (||)</a></p>
                 </div>
 
                 <div class="options">
                     <h2>rr.ajax.fetchAssoc:</h2>
-                    <p><a href="#" onclick="rr.ajax.fetchAssoc('ajx5.html', { responseHandler: demo.displayAssoc }); return false;">Exemplo array associativo e CSV (;)</a></p>
-                    <p><a href="#" onclick="rr.ajax.fetchAssoc('ajx5a.html', { responseHandler: demo.displayAssoc, delimiter: '&', separator: '=>' }); return false;">Exemplo array associativo com delimitador e separador personalizados (&amp; e =>)</a></p>
+                    <p><a href="#" onclick="rr.ajax.fetchAssoc('./examples/ajx5.html', { responseHandler: demo.displayAssoc }); return false;">Exemplo array associativo e CSV (;)</a></p>
+                    <p><a href="#" onclick="rr.ajax.fetchAssoc('./examples/ajx5a.html', { responseHandler: demo.displayAssoc, delimiter: '&', separator: '=>' }); return false;">Exemplo array associativo com delimitador e separador personalizados (&amp; e =>)</a></p>
                 </div>
 
                 <div class="options">
                     <h2>rr.ajax.replaceContent:</h2>
-                    <p><a href="#" onclick="rr.ajax.replaceContent('ajaxDemo1','ajx1.html'); return false;">Exemplo Simples</a></p>
-                    <p><a href="#" onclick="rr.ajax.replaceContent('ajaxDemo1','_ajx1.html'); return false;">Simulação de erro</a>
+                    <p><a href="#" onclick="rr.ajax.replaceContent('ajaxDemo1','./examples/ajx1.html'); return false;">Exemplo Simples</a></p>
+                    <p><a href="#" onclick="rr.ajax.replaceContent('ajaxDemo1','./examples/_ajx1.html'); return false;">Simulação de erro</a>
                     <br /><div style="width: 200px; height: 50px; border: 1px solid black;" id="ajaxDemo1">Texto Original</div></p>
                 </div>
 
