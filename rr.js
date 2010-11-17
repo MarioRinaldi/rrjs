@@ -311,30 +311,36 @@ var rr = {
         }
     },
     
-    getElement: function (sel) {
-        if (typeof sel === 'object') {
+    getElement: function (sel, context) {
+        if(!sel) return false;
+        
+        if (typeof(sel) === 'object') {
             return sel;
         
         } else if (sel.match(/^#/)){
             return document.getElementById(sel.replace(/^#/,''));
             
-        } else if (sel.match(/^\./)){
-            sel = sel.replace(/^\./,'');
-            if (document.getElementsByClassName) {
-                return document.getElementsByClassName(sel);
+        } else {
+            context = rr.getElement(context) || document;
+            
+            if (sel.match(/^\./)){
+                sel = sel.replace(/^\./,'');
+                if (document.getElementsByClassName) {
+                    return context.getElementsByClassName(sel);
+                    
+                } else {
+                    var result = [], elements = context.getElementsByTagName('*');
+                    for (var i = 0, len = elements.length; i < len; i++) {
+                        if (elements[i].className.match(sel)) {
+                            result.push(elements[i]);
+                        }
+                    }
+                    return result;
+                }
                 
             } else {
-                var result = [], elements = document.getElementsByTagName('*');
-                for (var i = 0, len = elements.length; i < len; i++) {
-                    if (elements[i].className.match(sel)) {
-                        result.push(elements[i]);
-                    }
-                }
-                return result;
+                return context.getElementsByTagName(sel);        
             }
-            
-        } else {
-            return document.getElementsByTagName(sel);        
         }
     },
     
