@@ -6,13 +6,13 @@ var rr = rr || {};
 // Specific inits
 init.index = function() {
     var hide = [
-        'popupMessage_0_div',
-        'popupMessage_1_div',
-        'popupMessage_2_div',
-        'popupMessage_3_div',
-        'popupMessage_4_div',
-        'popupMessage_5_div',
-        'popupMessage_6_div'
+        '#popupMessage_0_div',
+        '#popupMessage_1_div',
+        '#popupMessage_2_div',
+        '#popupMessage_3_div',
+        '#popupMessage_4_div',
+        '#popupMessage_5_div',
+        '#popupMessage_6_div'
     ];
     for (var i=0, len = hide.length;i < len;i++) {
         rr.showHideElement(hide[i]);
@@ -67,7 +67,7 @@ util.showHideNews = function(elem, container, url, callback) {
 
 main.showCode = function(v){
     var div = v.id.replace(/_a/i,"_div");
-    rr.showHideElement(div);
+    rr.showHideElement('#' + div);
     //util.showHideNews('show-index-oldnews', 'index-oldnews', 'ajax/index-oldnews.php', init.index_oldnews );
 };
 

@@ -73,7 +73,7 @@ var rr = {
     popupMessage: function(msg, v) {
         var vars = rr.getVars(v, {className: 'rrPopupMessage'});
         
-        var popupMessage_hide = function () { document.body.removeChild(rr.getElement('rrPopupMessage')); };
+        var popupMessage_hide = function () { document.body.removeChild(rr.getElement('#rrPopupMessage')); };
         
         // Define variaveis condicionais
         vars.msg          = (vars.title)     ? ("<h1>" + vars.title + "</h1>" + msg):(msg);
@@ -91,7 +91,7 @@ var rr = {
         if (vars.width) { vars.marginLeft = (((vars.width  / 2) * - 1) + "px"); }
         if (vars.height) { vars.marginTop = (((vars.height / 2) * - 1) + "px"); }
         
-        if (rr.getElement('rrPopupMessage')) { popupMessage_hide.call(); }
+        if (rr.getElement('#rrPopupMessage')) { popupMessage_hide.call(); }
 
         // Cria elementos
         var mainDiv = document.createElement("DIV");
@@ -152,7 +152,7 @@ var rr = {
         if (vars.width) { vars.marginLeft = (((vars.width  / 2) * - 1) + "px"); }
         if (vars.height) { vars.marginTop = (((vars.height / 2) * - 1) + "px"); }
         
-        if (rr.getElement('rrPopupFrame')) { rr.popupFrame_hide.call(); }
+        if (rr.getElement('#rrPopupFrame')) { rr.popupFrame_hide.call(); }
         
         var mainDiv = document.createElement("div");
         mainDiv.id = "rrPopupFrame";
@@ -196,18 +196,18 @@ var rr = {
              mainDiv.style.marginTop = vars.marginTop; }
 
         document.body.appendChild(mainDiv);
-        if (vars.closeButton === 'yes') { rr.addEvent("xImg","click",rr.popupFrame_hide); }
-        if (vars.overlay) { rr.createOverlay(rr.getElement('xImg'), vars.overlay); }
+        if (vars.closeButton === 'yes') { rr.addEvent("#xImg","click",rr.popupFrame_hide); }
+        if (vars.overlay) { rr.createOverlay(rr.getElement('#xImg'), vars.overlay); }
 		if (vars.callback) { vars.callback.call(); }
         return false;
     },
     
     popupFrame_hide: function() {
-		rr.removeElement(rr.getElement('rrPopupFrame'));
-		rr.removeElement(rr.getElement('rrOverlay'));
+		rr.removeElement(rr.getElement('#rrPopupFrame'));
+		rr.removeElement(rr.getElement('#rrOverlay'));
 
 
-		rr.removeElement(rr.getElement('rrIframe'));
+		rr.removeElement(rr.getElement('#rrIframe'));
 		return true;
     },
     
@@ -249,7 +249,7 @@ var rr = {
         return false;
     },
 	overlay_hide: function() {
-		rr.removeElement(rr.getElement('rrOverlay'));
+		rr.removeElement(rr.getElement('#rrOverlay'));
 		return true;
     },
 	onlyNumbers: function (evt, v) {
@@ -364,7 +364,7 @@ var rr = {
     showHideElement: function (elem, v) {
         var vars = rr.getVars(v, { display: 'block' } );
         elem = rr.getElement(elem);
-        elem.style.display = elem.style.display === ('none') ? (vars.display) : ('none');
+        elem.style.display = (elem.style.display === 'none') ? (vars.display) : ('none');
         return false;
     },
     
