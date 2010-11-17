@@ -311,31 +311,28 @@ var rr = {
         }
     },
     
-    getElement: function (elem) {
-        if (typeof elem == 'object') { return elem;  }
-        else { return document.getElementById(elem); }
-    },
-    
-    /* futura função que substituirá a getElement */
-    getElement_NEW: function (sel) {
-        if (sel.match(/^#/)){
-            return document.getElementById(sel.replace('#',''));
-        } else if (sel.match(/^./)){
-            sel = sel.replace('.','');
+    getElement: function (sel) {
+        if (typeof sel === 'object') {
+            return sel;
+        
+        } else if (sel.match(/^#/)){
+            return document.getElementById(sel.replace(/^#/,''));
+            
+        } else if (sel.match(/^\./)){
+            sel = sel.replace(/^\./,'');
             if (document.getElementsByClassName) {
-                console.log('firefox');
                 return document.getElementsByClassName(sel);
+                
             } else {
-                var saida = [];
-                var elements = document.getElementsByTagName("*");
-                for ( var i = 0, len =  elements.length; i < len ; i++) {
+                var result = [], elements = document.getElementsByTagName('*');
+                for (var i = 0, len = elements.length; i < len; i++) {
                     if (elements[i].className.match(sel)) {
-                         saida.push(elements[i]);
+                        result.push(elements[i]);
                     }
                 }
-                saida = saida || [];
-                return saida;
+                return result;
             }
+            
         } else {
             return document.getElementsByTagName(sel);        
         }
