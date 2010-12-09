@@ -8,5 +8,5 @@ $a = preg_replace('/\n/','',preg_replace('/\r/','',$a));
 $b = preg_replace('/\n/','',preg_replace('/\r/','',$b));
 
 header("Content-Type: text/css; charset=utf-8");
-echo $a . $b;
+echo trim($a . $b);
 ?>
