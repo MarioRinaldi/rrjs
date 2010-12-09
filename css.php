@@ -3,12 +3,22 @@
 $a = file_get_contents("rr.css");
 $b = file_get_contents("main.css");
 
-$c = $a . $b;
+$css = $a . $b;
 
-$c = str_replace(array("\r\n", "\r", "\n", "\t", "\s{2,}"), '', $c);
-$c = trim($c);
+// Remover comentarios
+$css = preg_replace('!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $css);
+// Remover Tabs e NewLines
+$css = preg_replace('#(\r|\n|\t)#', '', $css);
+// Remover caracteres com espaços extras
+$css = preg_replace('#[ ]*([,:;\{\}])[ ]*#', '$1', $css);
+// Extras
+$css = strtr($css, array(
+    ';}' => '}'
+));
+
+$css = trim($css);
 
 header("Content-Type: text/css; charset=iso-8859-1");
-echo $c;
+echo $css;
 
 ?>
