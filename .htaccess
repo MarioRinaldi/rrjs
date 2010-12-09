@@ -18,17 +18,37 @@ AddOutputFilterByType DEFLATE text/text text/html text/plain text/xml text/css t
 # END GZIP
 
 
-
+<ifmodule mod_expires.c>
+ExpiresActive On
 # faz com que as coisas expirem Expire
+
 ExpiresByType text/html "access plus 1 hour"
+ExpiresByType text/html "modification plus 1 hour"
+
 ExpiresByType text/css "access plus 1 month"
+ExpiresByType text/css "modification plus 1 month"
+
 ExpiresByType text/javascript "access plus 1 month"
+ExpiresByType text/javascript "modification plus 1 month"
+
 ExpiresByType image/x-icon "access plus 1 month"
+ExpiresByType image/x-icon "modification plus 1 month"
+
 ExpiresByType image/jpg "access plus 1 week"
+ExpiresByType image/jpg "modification plus 1 week"
+
 ExpiresByType image/jpeg "access plus 1 week"
+ExpiresByType image/jpeg "modification plus 1 week"
+
 ExpiresByType image/png "access plus 1 week"
+ExpiresByType image/png "modification plus 1 week"
+
 ExpiresByType image/gif "access plus 1 week"
+ExpiresByType image/gif "modification plus 1 week"
+
 ExpiresDefault "access plus 1 month"
+ExpiresDefault "modification plus 1 month"
+</ifmodule>
 
 <FilesMatch ".(flv|gif|jpg|jpeg|png|ico|swf)$">
 Header set Cache-Control "max-age=2592000"
