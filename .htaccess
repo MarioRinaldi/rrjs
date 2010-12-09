@@ -8,8 +8,8 @@ Options All -Indexes
 #compactando
 #php_flag eaccelerator.enable 1               
 #php_flag eaccelerator.optimizer 1
-php_flag zlib.output_compression On
-php_value zlib.output_compression_level 6
+#php_flag zlib.output_compression On
+#php_value zlib.output_compression_level 6
 
 # BEGIN GZIP
 <ifmodule mod_deflate.c>
