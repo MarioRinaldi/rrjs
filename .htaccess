@@ -1,6 +1,6 @@
-RewriteEngine on
-RewriteCond $1 !^(index\.php|images|pub|robots\.txt|google763aa40e023a53fe\.html)
-RewriteRule ^(.*)$ /index.php/$1 [L]
+#RewriteEngine on
+#RewriteCond $1 !^(index\.html|images|pub|robots\.txt|google763aa40e023a53fe\.html|update\.php)
+#RewriteRule ^(.*)$ /index.html/$1 [L]
 
 # disable directory browsing
 Options All -Indexes
