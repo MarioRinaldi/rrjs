@@ -5,9 +5,7 @@ $b = file_get_contents("main.css");
 
 $c = $a . $b;
 
-$c = preg_replace('/\r\n/','',$c);
-$c = preg_replace('/\s{2,}/','',$c);
-$c = preg_replace('/\t/','',$c);
+$c = str_replace(array("\r\n", "\r", "\n", "\t", "\s{2,}"), '', $c);
 $c = trim($c);
 
 header("Content-Type: text/css; charset=iso-8859-1");
