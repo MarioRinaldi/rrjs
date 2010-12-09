@@ -11,7 +11,7 @@ function compressCSS(){
     $css = preg_replace('!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $css);
     // Remover Tabs e NewLines
     $css = preg_replace('#(\r|\n|\t)#', '', $css);
-    // Remover caracteres com espaÁos extras
+    // Remover caracteres com espa√ßos extras
     $css = preg_replace('#[ ]*([,:;\{\}])[ ]*#', '$1', $css);
     // Extras
     $css = strtr($css, array(
@@ -23,7 +23,7 @@ function compressCSS(){
     file_put_contents("arquivo.css",$css);
 }
 
-echo "iciando atualizaÁ„o do GIT...";
+echo "iciando atualiza√ß√£o do GIT...";
 try {
     exec('git pull');
     echo "ok";
@@ -32,7 +32,7 @@ try {
 }
 
 echo "\n\n";
-echo "iciando compress„o do css...";
+echo "iciando compress√£o do css...";
 
 try {
     compressCSS();
