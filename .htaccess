@@ -2,7 +2,7 @@ RewriteEngine on
 RewriteCond %{REQUEST_URI} (arquivo.css)$ [NC] 
 RewriteRule ^arquivo.css$ /css.php [L]
 
-RewriteCond $1 !^(index\.html|images|pub|robots\.txt|google763aa40e023a53fe\.html|update\.php|css|js)
+RewriteCond $1 !^(index\.html|images|pub|robots\.txt|google763aa40e023a53fe\.html|update\.php|*\.css|*\.js)
 RewriteRule ^(.*)$ /index.html/$1 [L]
 
 # disable directory browsing
