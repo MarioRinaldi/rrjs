@@ -1,6 +1,5 @@
-updating website with GIT...<br/>
 <?php 
-
+header("Content-Type: text/plain; charset=utf-8");
 
 function compressCSS(){
     $a = file_get_contents("rr.css");
@@ -21,7 +20,6 @@ function compressCSS(){
 
     $css = trim($css);
 
-    header("Content-Type: text/css; charset=iso-8859-1");
     file_put_contents("arquivo.css",$css);
 }
 
