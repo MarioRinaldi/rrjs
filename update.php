@@ -1,26 +1,38 @@
 <?php 
 header("Content-Type: text/plain; charset=utf-8");
 
-function compressCSS(){
-    $a = file_get_contents("rr.css");
-    $b = file_get_contents("main.css");
+function compressFile($files, $name){
+    if (preg_match('/\.css$/',$name)){
+        $type = 'css';
+    }
+    else if (preg_match('/\.js$/',$name)){
+        $type = 'js' ;
+    }
 
-    $css = $a . $b;
-
+    $arq = "";
+    foreach ($files as $file) {
+        $arq .= file_get_contents($file);
+    }
+    
     // Remover comentarios
-    $css = preg_replace('!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $css);
+    $arq = preg_replace('!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $arq);
+    if (isset($type) && $type == "js"){
+        $arq = preg_replace('#\/\/.+\n?#','', $arq);
+    }
     // Remover Tabs e NewLines
-    $css = preg_replace('#(\r|\n|\t)#', '', $css);
+    $arq = preg_replace('#(\r|\n|\t)#', '', $arq);
     // Remover caracteres com espaços extras
-    $css = preg_replace('#[ ]*([,:;\{\}])[ ]*#', '$1', $css);
-    // Extras
-    $css = strtr($css, array(
-        ';}' => '}'
-    ));
+    $arq = preg_replace('#[ ]*([,:;\{\}])[ ]*#', '$1', $arq);
+    // Remover ';' desnecessario
+    if (isset($type) && $type == "css"){
+        $arq = strtr($arq, array(
+            ';}' => '}'
+        ));
+    }
+    
+    $arq = trim($arq);
 
-    $css = trim($css);
-
-    file_put_contents("arquivo.css",$css);
+    file_put_contents($name,$arq);
 }
 
 echo "iciando atualização do GIT...";
@@ -30,12 +42,27 @@ try {
 } catch (Exception $e) {
     echo "FAIL";
 }
-
 echo "\n\n";
-echo "iciando compressão do css...";
+
+echo "iciando compressão do CSS...";
 
 try {
-    compressCSS();
+    //css
+    compressFile(array('rr.css','main.css'), 'arquivo.css');
+    compressFile(array('rr.css'), 'rr_compress.css');
+    echo "Ok";
+} catch (Exception $e) {
+    echo "FAIL";
+}
+echo "\n\n";
+
+
+echo "iciando compressão do JS...";
+
+try {
+    //css
+    compressFile(array('rr.js','main.js'), 'arquivo.js');
+    compressFile(array('rr.js'), 'rr_compress.js');
     echo "Ok";
 } catch (Exception $e) {
     echo "FAIL";
