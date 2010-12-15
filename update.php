@@ -43,7 +43,7 @@ try {
     echo "FAIL";
 }
 echo "\n\n";
-
+/*
 echo "iciando compressão do CSS...";
 
 try {
@@ -68,5 +68,5 @@ try {
     echo "FAIL";
 }
 echo "\n\n";
-
+*/
 ?>
