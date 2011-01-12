@@ -310,34 +310,60 @@ var rr = {
     },
     
     getElement: function (sel, context) {
-        if(!sel) { return false; }
+        if(!sel) { return null; } // 1: No selector
         
         if (typeof(sel) === 'object') {
-            return sel;
+            return sel; // 2: Already an object
         
-        } else if (sel.match(/^#/)){
+        } else if (sel.match(/^#/)){ // 3: Get Element By Id
             return document.getElementById(sel.replace(/^#/,''));
             
         } else {
-            context = rr.getElement(context) || document;
+            var elements, result = [];
             
-            if (sel.match(/^\./)){
+            context = rr.getElement(context) || document ; // Calculate context(s)
+            if(!context.length) { context = [ context ]};
+            
+            if (sel.match(/^\./)){ // 4: By Class Name
                 sel = sel.replace(/^\./,'');
-                if (document.getElementsByClassName) {
-                    return context.getElementsByClassName(sel);
+                
+                if (document.getElementsByClassName) { // Native: FF, Chrome, Opera
                     
-                } else {
-                    var result = [], elements = context.getElementsByTagName('*');
-                    for (var i = 0, len = elements.length; i < len; i++) {
-                        if (elements[i].className.match(sel)) {
-                            result.push(elements[i]);
+                    for (var i = 0, len = context.length; i < len; i++) { // Iterate over context(s)
+                        elements = context[i].getElementsByClassName(sel);
+                        for (var j in elements) { // Itarate over element(s) in each context
+                            if(elements.hasOwnProperty(j)) {
+                                result.push(elements[j]);
+                            }
+                        }
+                    }
+                    return result;
+                
+                } else { // No native: IE
+                    
+                    for (var i = 0, len = context.length; i < len; i++) { // Iterate over context(s)
+                        elements = context[i].getElementsByTagName('*');
+                        for (var j = 0, len = elements.length; j < len; j++) { // Itarate over element(s) in each context
+                            if (elements[j].className.match(sel)) {
+                                result.push(elements[j]);
+                            }
                         }
                     }
                     return result;
                 }
                 
-            } else {
-                return context.getElementsByTagName(sel);        
+            } else { // 5: By tag name
+                
+                for (var i = 0, len = context.length; i < len; i++) { // Iterate over context(s)
+                    elements = context[i].getElementsByTagName(sel);
+                    for (var j  in elements) { // Itarate over element(s) in each context
+                        if(elements.hasOwnProperty(j)) {
+                            result.push(elements[j]);
+                        }
+                    }
+                }
+                
+                return result
             }
         }
     },

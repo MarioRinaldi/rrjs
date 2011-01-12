@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>RR.JS - Exemplos - Seletores</title>
+    
+    <style type="text/css">
+        * { font-size: 10px; }
+        h5 { margin: 0 2px; }
+        .light { background-color: #E5E5E5;}
+        .dark { background-color: #CCC;}
+        .odd { background-color: #DDD;}
+        .even { background-color: #BBB;}
+    </style>
+
+</head>
+
+<body id="index">
+<div id="content">
+
+    <div id="conteudo1" class="dark">
+        <h5>Conteúdo 1</h5>
+        <ul>
+            <li id="first" class="odd">li1</li>
+            <li class="even">li2</li>
+            <li class="odd">li3</li>
+            <li class="even">li4</li>
+            <li class="odd">li5</li>
+            <li class="even">li6</li>
+            <li class="odd">li7</li>
+            <li class="even">li8</li>
+        </ul>
+    </div>
+    
+    <div id="conteudo2" class="light">
+        <h5>Conteúdo 2</h5>
+        <ul>
+            <li class="odd">li1</li>
+            <li class="even">li2</li>
+            <li class="odd">li3</li>
+            <li class="even">li4</li>
+            <li class="odd">li5</li>
+            <li class="even">li6</li>
+            <li class="odd">li7</li>
+            <li id="last" class="even">li8</li>
+        </ul>
+    </div>
+    
+    <div id="conteudo3" class="dark">
+        <h5>Conteúdo 3</h5>
+        <ul>
+            <li class="odd">li1</li>
+            <li class="even">li2</li>
+            <li class="odd">li3</li>
+            <li class="even">li4</li>
+            <li class="odd">li5</li>
+            <li class="even">li6</li>
+            <li class="odd">li7</li>
+            <li id="last" class="even">li8</li>
+        </ul>
+    </div>
+
+<script type="text/javascript" src="rr.js"></script>
+
+<script>
+    if (typeof(console) == 'undefined') { console = { group: function(){}, groupEnd: function(){}, info: function(x) { alert(x) }, dir: function(x) {alert(x) }, debug: function(x) { alert(x) } } };
+
+    console.group('Por referencia');
+        console.debug(rr.getElement(document.getElementById('first')));
+    console.groupEnd('Por referencia');
+    
+    console.group('Por ID');
+        console.debug(rr.getElement('#first'));    
+    console.groupEnd('Por ID');
+    
+    console.group('Sem contexto');
+        console.debug(rr.getElement('.even'));
+        console.debug(rr.getElement('LI'));
+    console.groupEnd('Sem contexto');
+    
+    console.group('Com contexto');
+        var box = '#conteudo1';
+        console.debug(rr.getElement('.even', box));
+        console.debug(rr.getElement('LI', box)); 
+    console.groupEnd('Com contexto');
+    
+    console.group('Contextos multiplos');
+        var box = '.dark';
+        console.debug(rr.getElement('.even', box));
+        console.debug(rr.getElement('LI', box)); 
+    console.groupEnd('Contextos multiplos');
+        
+</script>
+
+</body>
+</html>
