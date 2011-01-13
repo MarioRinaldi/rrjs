@@ -437,7 +437,10 @@ var rr = {
             
             var parseAjaxResponse = function () {
                 if(ajaxObject.readyState === 1 && vars.loadingHandler) { vars.loadingHandler.call(this, ajaxObject); }
-                if(ajaxObject.readyState === 4){ vars.responseHandler.call(this, ajaxObject); }
+                else if(ajaxObject.readyState === 4){
+                    if(ajaxObject.status == 200) { vars.responseHandler.call(this, ajaxObject); }
+                    else { vars.errorHandler.call(ajaxObject); }
+                }
             };
             
             var ajaxObject = makeAjaxObject();
