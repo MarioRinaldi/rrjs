@@ -113,20 +113,20 @@
                 
                 <div class="options">
                     <h2>rr.ajax.fetchArray:</h2>
-                    <p><a href="#" onclick="rr.ajax.fetchArray('./examples/ajx4.html', { responseHandler: demo.displayArray }); return false;">Exemplo array simples e CSV (;)</a></p>
-                    <p><a href="#" onclick="rr.ajax.fetchArray('./examples/ajx4a.html', { responseHandler: demo.displayArray, delimiter: '||' }); return false;">Exemplo com array simples e delimitador personalizado (||)</a></p>
+                    <p><a href="#" onclick="rr.ajax.fetchArray('./examples/ajx4.csv', { responseHandler: demo.displayArray }); return false;">Exemplo array simples e CSV (;)</a></p>
+                    <p><a href="#" onclick="rr.ajax.fetchArray('./examples/ajx5.txt', { responseHandler: demo.displayArray, delimiter: '||' }); return false;">Exemplo com array simples e delimitador personalizado (||)</a></p>
                 </div>
 
                 <div class="options">
                     <h2>rr.ajax.fetchAssoc:</h2>
-                    <p><a href="#" onclick="rr.ajax.fetchAssoc('./examples/ajx5.html', { responseHandler: demo.displayAssoc }); return false;">Exemplo array associativo e CSV (;)</a></p>
-                    <p><a href="#" onclick="rr.ajax.fetchAssoc('./examples/ajx5a.html', { responseHandler: demo.displayAssoc, delimiter: '&', separator: '=>' }); return false;">Exemplo array associativo com delimitador e separador personalizados (&amp; e =>)</a></p>
+                    <p><a href="#" onclick="rr.ajax.fetchAssoc('./examples/ajx6.csv', { responseHandler: demo.displayAssoc }); return false;">Exemplo array associativo e CSV (;)</a></p>
+                    <p><a href="#" onclick="rr.ajax.fetchAssoc('./examples/ajx7.txt', { responseHandler: demo.displayAssoc, delimiter: '&', separator: '=>' }); return false;">Exemplo array associativo com delimitador e separador personalizados (&amp; e =>)</a></p>
                 </div>
 
                 <div class="options">
                     <h2>rr.ajax.replaceContent:</h2>
-                    <p><a href="#" onclick="rr.ajax.replaceContent('ajaxDemo1','./examples/ajx1.html'); return false;">Exemplo Simples</a></p>
-                    <p><a href="#" onclick="rr.ajax.replaceContent('ajaxDemo1','./examples/_ajx1.html'); return false;">Simulação de erro</a>
+                    <p><a href="#" onclick="rr.ajax.replaceContent('#ajaxDemo1','./examples/ajx1.html'); return false;">Exemplo Simples</a></p>
+                    <p><a href="#" onclick="rr.ajax.replaceContent('#ajaxDemo1','./examples/ajx_404.html'); return false;">Simulação de erro</a>
                     <br /><div style="width: 200px; height: 50px; border: 1px solid black;" id="ajaxDemo1">Texto Original</div></p>
                 </div>
 
