@@ -17,8 +17,7 @@ var rr = {
     //Define default messages
     str: { ajxError: 'Error obtaining AJAX content', ajxLoading: 'Loading...', 
            cancelButton: 'Cancel', okButton: 'OK', yesButton: 'Yes', noButton: 'No',
-           addBookmark: 'Press CTRL+D to bookmark this page!',
-           mozOnly: 'This function works only on Mozilla based browsers' },
+           addBookmark: 'Press CTRL+D to bookmark this page!' },
         
     initVariables: function() {
         
@@ -39,8 +38,7 @@ var rr = {
         var str = {
             'pt-br': { ajxError: 'Erro obtendo o conteudo AJAX', ajxLoading: 'Carregando...', 
                        cancelButton: 'Cancelar', okButton: 'OK', yesButton: 'Sim', noButton: 'Não',
-                       addBookmark: 'Pressione CTRL+D para adicionar essa página aos favoritos',
-                       mozOnly: 'Este recurso funciona apenas em navegadores baseados no Mozilla' }
+                       addBookmark: 'Pressione CTRL+D para adicionar essa página aos favoritos' }
         };
         
         // Override default messages with localized ones, if exists.
@@ -73,8 +71,6 @@ var rr = {
     popupMessage: function(msg, v) {
         var vars = rr.getVars(v, {className: 'rrPopupMessage'});
         
-        var popupMessage_hide = function () { document.body.removeChild(rr.getElement('#rrPopupMessage')); };
-        
         // Define variaveis condicionais
         vars.msg          = (vars.title)     ? ("<h1>" + vars.title + "</h1>" + msg):(msg);
         vars.className    = (vars.auxClass)  ? (vars.className + " " + vars.auxClass):(vars.className);
@@ -91,7 +87,7 @@ var rr = {
         if (vars.width) { vars.marginLeft = (((vars.width  / 2) * - 1) + "px"); }
         if (vars.height) { vars.marginTop = (((vars.height / 2) * - 1) + "px"); }
         
-        if (rr.getElement('#rrPopupMessage')) { popupMessage_hide.call(); }
+        if (rr.getElement('#rrPopupMessage')) { rr.popupMessage_hide(); }
 
         // Cria elementos
         var mainDiv = document.createElement("DIV");
@@ -111,7 +107,7 @@ var rr = {
         okButton.type = "button";
         okButton.value = rr.str['button2'];
         okButton.className = "button ok";
-        rr.addEvent(okButton, "click", popupMessage_hide);
+        rr.addEvent(okButton, "click", rr.popupMessage_hide);
         rr.addEvent(okButton, "click", vars.okFunction || function() { return true; } );
         
         if (vars.cancelButton) {
@@ -119,7 +115,7 @@ var rr = {
             cancelButton.type = "button";
             cancelButton.value = rr.str['button1'];
             cancelButton.className = "button cancel";
-            rr.addEvent(cancelButton, "click", popupMessage_hide);
+            rr.addEvent(cancelButton, "click", rr.popupMessage_hide);
             rr.addEvent(cancelButton, "click", vars.cancelFunction || function() { return true; } );
         }
         
@@ -131,7 +127,7 @@ var rr = {
         if (vars.height && vars.marginTop) {
              mainDiv.style.height = (vars.height + "px");
              mainDiv.style.marginTop = vars.marginTop; }
-
+        
         // Anexa elementos ao documento
         mainDiv.appendChild(textDiv);
         mainDiv.appendChild(buttonDiv);
@@ -141,7 +137,11 @@ var rr = {
         
         if (vars.overlay) { rr.createOverlay(okButton, vars.overlay); }
         okButton.focus();
-        return false;
+        return true;
+    },
+    
+    popupMessage_hide: function() {
+        rr.removeElement('#rrPopupMessage');
     },
     
     popupFrame: function (src, v) {
@@ -152,14 +152,14 @@ var rr = {
         if (vars.width) { vars.marginLeft = (((vars.width  / 2) * - 1) + "px"); }
         if (vars.height) { vars.marginTop = (((vars.height / 2) * - 1) + "px"); }
         
-        if (rr.getElement('#rrPopupFrame')) { rr.popupFrame_hide.call(); }
+        if (rr.getElement('#rrPopupFrame')) { rr.popupFrame_hide(); }
         
         var mainDiv = document.createElement("div");
         mainDiv.id = "rrPopupFrame";
         mainDiv.className = vars.className;
         
         if (vars.closeButton === 'yes') {
-            var xDiv     = document.createElement("div");
+            var xDiv = document.createElement("div");
             xDiv.id = "xDiv";
             xDiv.className = "x";
             xDiv.innerHTML = "<img src=\"img/close.gif\" border=\"0\" id='xImg'>";
@@ -181,11 +181,11 @@ var rr = {
 				var place = document.createElement('div');
 				contentDiv.appendChild(place);
 				contentDiv.replaceChild(vars.content, place);
-                
 			} else {
-                rr.ajax.replaceContent (contentDiv, src);
+                rr.ajax.replaceContent(contentDiv, src);
             }
         }
+        
         // Define estilos condicionais
         if (vars.width && vars.marginLeft) {
              mainDiv.style.width = (vars.width + "px");
@@ -197,17 +197,14 @@ var rr = {
 
         document.body.appendChild(mainDiv);
         if (vars.closeButton === 'yes') { rr.addEvent("#xImg","click",rr.popupFrame_hide); }
-        if (vars.overlay) { rr.createOverlay(rr.getElement('#xImg'), vars.overlay); }
+        if (vars.overlay) { rr.createOverlay('#xImg', vars.overlay); }
 		if (vars.callback) { vars.callback.call(); }
-        return false;
+        return true;
     },
     
     popupFrame_hide: function() {
-		rr.removeElement(rr.getElement('#rrPopupFrame'));
-		rr.removeElement(rr.getElement('#rrOverlay'));
-
-
-		rr.removeElement(rr.getElement('#rrIframe'));
+		rr.removeElement('#rrPopupFrame');
+        rr.overlay_hide();
 		return true;
     },
     
@@ -228,7 +225,8 @@ var rr = {
         if (vars.color) { overlay.style.backgroundColor = vars.color; }
         
         document.body.appendChild(overlay);
-		//IE 6 Only - Hacks & Bug fixes
+        
+		//IE 6 Only - Hacks & Bug fixes - Should I remove this?
 		if ( window.ActiveXObject && typeof document.body.style.maxHeight === "undefined" ) {
 			var ifrm = document.createElement("iframe");
 			ifrm.id = "rrIframe";
@@ -244,21 +242,24 @@ var rr = {
 			overlayHeight = (contentHeight < windowHeight) ? windowHeight : contentHeight;
 			overlay.style.height = overlayHeight + "px";
 		}
+        
         if (!elem && vars.modal !== "yes") { elem = overlay; }
         rr.addEvent(elem, "click", rr.overlay_hide);
-        return false;
+        return true;
     },
+    
 	overlay_hide: function() {
-		rr.removeElement(rr.getElement('#rrOverlay'));
+		rr.removeElement('#rrOverlay');
+		rr.removeElement('#rrIframe');
 		return true;
     },
-	onlyNumbers: function (evt, v) {
-        var vars = rr.getVars(v);
-		
+    
+	onlyNumbers: function (evt) {
 		var k = evt.keyCode;
 		if (!(k === 46 ||k === 8 ||k === 9 || k >= 48 && k <= 57 || k >= 96 && k <= 105 || k >= 35 && k <= 39)) {
 			return false;
 		}
+        return true;
 	},
 	
 	formatField: function (elem, fieldType, v) {
@@ -303,10 +304,11 @@ var rr = {
     addEvent: function (elem, evt, func, v) {
         var vars = rr.getVars(v, { useCapture: false } );
         elem = rr.getElement(elem);
-        if(typeof(elem) === 'object') {
-            if (elem.addEventListener) { elem.addEventListener (evt, func, vars.useCapture); }
-            else if (elem.attachEvent) { elem.attachEvent ("on" + evt, func); }
+        if(elem.addEventListener || elem.attachEvent) {
+            if (elem.addEventListener) { return elem.addEventListener (evt, func, vars.useCapture); }
+            else if (elem.attachEvent) { return elem.attachEvent ("on" + evt, func); }
         }
+        return false;
     },
     
     getElement: function (selector, context) {
@@ -373,6 +375,7 @@ var rr = {
     },
     
     addClass: function(elem, clsName) {
+        elem = rr.getElement(elem);
         var tmpClass = elem.className.split(' ');
         tmpClass.push(clsName);
         elem.className = tmpClass.join(' ');
@@ -380,6 +383,7 @@ var rr = {
     },
 
     removeClass: function(elem, clsName) {
+        elem = rr.getElement(elem);
         elem.className = elem.className.replace(clsName, '');
         return elem;
     },
@@ -388,7 +392,7 @@ var rr = {
         var vars = rr.getVars(v, { display: 'block' } );
         elem = rr.getElement(elem);
         elem.style.display = (elem.style.display === 'none') ? (vars.display) : ('none');
-        return false;
+        return elem.style.display;
     },
     
     parseArray: function(str, v) { 
@@ -404,7 +408,6 @@ var rr = {
                 responseArray[arrItem[0]] = arrItem[1];
             }
         }
-        
         return responseArray;
     },
     
@@ -438,6 +441,7 @@ var rr = {
             };
             
             var ajaxObject = makeAjaxObject();
+            
             try {
                 ajaxObject.open(vars.method, url, vars.async);
                 ajaxObject.onreadystatechange = parseAjaxResponse; 
@@ -448,9 +452,10 @@ var rr = {
         replaceContent: function (elem, url, v) {
             var defaultLoadingText = "<div class=\"rrLoadingText\">" + rr.str['ajxLoading'] + "</div>";
             var vars = rr.getVars(v, { loadingText: defaultLoadingText } );
+            elem = rr.getElement(elem);
             
-            var loadingHandler  = function (ajaxObject) { rr.getElement(elem).innerHTML = vars.loadingText; };
-            var responseHandler = function (ajaxObject) { rr.getElement(elem).innerHTML = ajaxObject.responseText; };
+            var loadingHandler  = function (ajaxObject) { elem.innerHTML = vars.loadingText; };
+            var responseHandler = function (ajaxObject) { elem.innerHTML = ajaxObject.responseText; };
             
             rr.ajax.getResponse(url, { loadingHandler: loadingHandler, responseHandler: responseHandler });            
         },
@@ -465,7 +470,7 @@ var rr = {
             var parseResponse = function (ajaxObject) {
                 var responseArray = rr.parseArray(ajaxObject.responseText, vars);
                 
-                if (vars.responseHandler) { vars.responseHandler.call(this, responseArray); }
+                if (vars.responseHandler) { return vars.responseHandler.call(this, responseArray); }
                 else { return responseArray; }
             };
             
@@ -484,23 +489,6 @@ var rr = {
                 rr.ajax.replaceContent (args[elems][i], args[urls][i]);
             }
         }
-    },
-    
-    extras: {
-        installExtension: function(evt, description, icon) {
-            if (InstallTrigger) {
-                var vars = [];
-                vars[description] = {
-                    URL      : evt.target.href,
-                    IconURL  : icon,
-                    toString : function () { return this.URL; }
-                };
-                InstallTrigger.install(vars);
-            } else {
-                alert(rr.str['MozOnly']);
-            }
-            return false;
-        }
     }
 };
 
@@ -518,4 +506,11 @@ implementar search
 verficiar cultura
 inserir css via  js
 detectar browser
+*/
+
+/*
+## TODO 2011 ##
+-Verificar popupFrame, getStyle e addEvent em versões mais diferentes
+-Acertar espaços no addClass e removeClass
+-preparar addClass e removeClass para multiplos elementos
 */
