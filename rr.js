@@ -3,7 +3,7 @@
 #
 #    RR.JS - Biblioteca de funções comuns em Javascript
 #
-#    versão 0.0043 (unreleased beta)
+#    versão 0.0045 (unreleased beta)
 #
 #    (c) 2006 - 2096
 #    www.rrJS.net
@@ -209,7 +209,7 @@ var rr = {
     },
     
     createOverlay: function (elem, v) {
-        var vars = rr.getVars(v, {className: 'rrOverlay', modal: 'yes'} );
+        var vars = rr.getVars(v, {className: 'rrOverlay', modal: 'no'} );
         // Define variaveis condicionais
         vars.className  = (vars.auxClass)  ? (vars.className + " " + vars.auxClass):(vars.className);
         
@@ -243,7 +243,7 @@ var rr = {
 			overlay.style.height = overlayHeight + "px";
 		}
         
-        if (!elem && vars.modal !== "yes") { elem = overlay; }
+        if (!elem && vars.modal === "no") { elem = overlay; }
         rr.addEvent(elem, "click", rr.overlay_hide);
         return true;
     },
