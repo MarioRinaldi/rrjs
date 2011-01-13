@@ -5,36 +5,17 @@ var rr = rr || {};
 
 // Specific inits
 init.index = function() {
-    var hide = [
-        '#popupMessage_0_div',
-        '#popupMessage_1_div',
-        '#popupMessage_2_div',
-        '#popupMessage_3_div',
-        '#popupMessage_4_div',
-        '#popupMessage_5_div',
-        '#popupMessage_6_div'
-    ];
-    for (var i=0, len = hide.length;i < len;i++) {
-        rr.showHideElement(hide[i]);
+    var code = rr.getElement('.code');
+    for (var i=0, len = code.length;i < len;i++) {
+        rr.showHideElement(code[i]);
     }
 };
 
-/** * Atalho para document.getElmentById */
-var $id = function(elem) {
-	return document.getElementById(elem);
-};
-
-/** * Inicialização automática (Usa jQuery, mas pode usar o main.addEvent no lugar) */
+/** * Inicialização automática */
 try{
-	if(typeof($) != "undefined") {
-		$(function(){
-			main.autoInit();
-		});
-	}else {
-		rr.addEvent(window, 'load', function(){
-			main.autoInit();
-		});
-	}
+    rr.addEvent(window, 'load', function(){
+        main.autoInit();
+    });
 } catch(e) { };
 
 /** * Inicializador automático (Não usa jQuery) */
@@ -54,21 +35,9 @@ main.autoInit = function() {
 	}
 };
 
-// Show/hide oldnews
-util.showHideNews = function(elem, container, url, callback) {
-	rr.addEvent(elem, 'click', function(event){
-		if(event.preventDefault) { event.preventDefault(); }
-		rr.showHideElement(container);
-		if (rr.getStyle(container, 'display') != 'none') { rr.ajax.replaceContent(container, url, { callback: callback } ); }
-		return false;
-	});
-};
-
-
 main.showCode = function(v){
     var div = v.id.replace(/_a/i,"_div");
     rr.showHideElement('#' + div);
-    //util.showHideNews('show-index-oldnews', 'index-oldnews', 'ajax/index-oldnews.php', init.index_oldnews );
 };
 
 var demo = {
