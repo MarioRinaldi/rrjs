@@ -1,0 +1,36 @@
+{
+  "name": "rrjs",
+  "version": "1.0.0",
+  "description": "Biblioteca Javascript RR",
+  "main": "main.js",
+  "directories": {
+    "example": "examples",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarioRinaldi/rrjs.git"
+  },
+  "author": {
+    "name" : "Renato Rodrigues",
+    "email" : "renatosp@gmail.com"
+  },
+  "contributors": [
+    {
+      "name" : "Mario Felipe Rinaldi",
+      "email" : "lalo.rinaldi@gmail.com"
+    },
+    {
+      "name" : "Clauber Stipkovic Halic",
+      "email" : "clauber.halic@gmail.com"
+    }
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MarioRinaldi/rrjs/issues"
+  },
+  "homepage": "https://github.com/MarioRinaldi/rrjs#readme"
+}
